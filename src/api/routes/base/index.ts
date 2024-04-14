@@ -1,7 +1,6 @@
-import express, { Request, Response } from 'express';
-import { OK } from 'http-status';
+import express from 'express';
 
-import * as pkg from '../../../../package.json';
+import * as baseController from '../../controllers/base';
 
 const router = express.Router();
 
@@ -16,8 +15,6 @@ const router = express.Router();
  *       200:
  *         description: Returns the name, version, and description of the API.
  */
-router.get('/', (req: Request, res: Response) => {
-  res.status(OK).json({ name: pkg.name, version: pkg.version, description: pkg.description });
-});
+router.get('/', baseController.root);
 
 export default router;
