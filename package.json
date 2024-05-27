@@ -19,7 +19,7 @@
     "express": "^4.19.2",
     "express-prom-bundle": "^7.0.0",
     "http-status": "^1.7.4",
-    "pino-http": "^9.0.0",
+    "pino-http": "^10.1.0",
     "pino-pretty": "^11.1.0",
     "prom-client": "^15.1.2",
     "sequelize": "^6.37.3",
