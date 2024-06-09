@@ -2,5 +2,20 @@
   "extends": [
     "@msobiecki/eslint-config", 
     "@msobiecki/eslint-config/best-practice"
-  ]
+  ],
+  "env": {
+    "browser": false
+  },
+  "settings": {
+    "jsdoc": {
+      "tagNamePreference": {
+        "swagger": "swagger"
+      }
+    }
+  },
+  "rules": {
+    "global-require": "warn",
+    "no-restricted-syntax": "warn",
+    "unicorn/prefer-top-level-await": "warn"
+  }
 }

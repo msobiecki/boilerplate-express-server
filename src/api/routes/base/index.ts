@@ -1,6 +1,6 @@
-import express from 'express';
+import express from "express";
 
-import * as baseController from '../../controllers/base';
+import * as baseController from "../../controllers/base";
 
 const router = express.Router();
 
@@ -15,6 +15,6 @@ const router = express.Router();
  *       200:
  *         description: Returns the name, version, and description of the API.
  */
-router.get('/', baseController.root);
+router.get("/", baseController.default);
 
 export default router;

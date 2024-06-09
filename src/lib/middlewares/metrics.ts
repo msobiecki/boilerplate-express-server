@@ -1,14 +1,14 @@
-import promBundle from 'express-prom-bundle';
+import promBundle from "express-prom-bundle";
 
 const metricsMiddleware = promBundle({
-  includeStatusCode: true, 
-  includeMethod: true, 
-  includePath: true, 
+  includeStatusCode: true,
+  includeMethod: true,
+  includePath: true,
   includeUp: true,
-  metricType: 'summary',
+  metricType: "summary",
   promClient: {
-    collectDefaultMetrics: {}
-  }
+    collectDefaultMetrics: {},
+  },
 });
 
 export default metricsMiddleware;

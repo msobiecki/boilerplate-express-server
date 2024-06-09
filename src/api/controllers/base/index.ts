@@ -1,8 +1,14 @@
-import { Request, Response } from 'express';
-import { OK } from 'http-status';
+import { Request, Response } from "express";
+import { OK } from "http-status";
 
-import * as pkg from '../../../../package.json';
+import * as packageJson from "../../../../package.json";
 
-export const root = (req: Request, res: Response) => {
-  res.status(OK).json({ name: pkg.name, version: pkg.version, description: pkg.description });
+const root = (request: Request, response: Response) => {
+  response.status(OK).json({
+    name: packageJson.name,
+    version: packageJson.version,
+    description: packageJson.description,
+  });
 };
+
+export default root;
