@@ -24,7 +24,6 @@
     "pino-http": "^10.1.0",
     "pino-pretty": "^11.1.0",
     "prom-client": "^15.1.2",
-    "sequelize": "^6.37.3",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
   },
