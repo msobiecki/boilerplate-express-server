@@ -7,11 +7,11 @@ import NodePath from "node:path";
  * @throws {TypeError} - If the specified environment variable is not set.
  */
 export function getOsEnvironment(key: string): string {
-  if (process.env[key] === undefined) {
+  if (process.env[`${key}`] === undefined) {
     throw new TypeError(`Environment variable ${key} is not set.`);
   }
 
-  return process.env[key] as string;
+  return process.env[`${key}`] as string;
 }
 
 /**
@@ -21,7 +21,7 @@ export function getOsEnvironment(key: string): string {
  * @returns The value of the specified environment variable, or an empty string if the variable is not set.
  */
 export function getOsEnvironmentOptional(key: string): string {
-  return process.env[key] || "";
+  return process.env[`${key}`] || "";
 }
 
 /**
@@ -73,7 +73,9 @@ export function getOsEnvironmentArray(
   key: string,
   delimiter: string = ",",
 ): string[] {
-  return (process.env[key] && process.env[key]!.split(delimiter)) || [];
+  return (
+    (process.env[`${key}`] && process.env[`${key}`]!.split(delimiter)) || []
+  );
 }
 
 /**
