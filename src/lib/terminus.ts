@@ -1,5 +1,11 @@
 import { Server } from "node:http";
-import { createTerminus, TerminusState } from "@godaddy/terminus";
+import {
+  createTerminus,
+  HealthCheckError,
+  TerminusState,
+} from "@godaddy/terminus";
+
+import { checkDumpConnection } from "./health-checks";
 
 import { taggedLogger } from "./logger";
 
@@ -11,16 +17,29 @@ const logger = taggedLogger("terminus");
  * @param root.state - The state of the server.
  * @returns A promise that resolves, optionally with a value to be included in the health check response.
  */
-function healthCheck({ state }: { state: TerminusState }) {
+async function healthCheck({ state }: { state: TerminusState }) {
   const { isShuttingDown } = state;
   if (isShuttingDown) {
     logger.info("Server is shutting down");
   }
-  return Promise
-    .resolve
-    // optionally include a resolve value to be included as
-    // info in the health check response
-    ();
+
+  // optionally include a resolve value to be included as
+  // info in the health check response
+  const checks = [checkDumpConnection()];
+  const errors: Error[] = [];
+
+  await Promise.all(
+    checks.map((promise) =>
+      promise.catch((error: Error) => {
+        errors.push(error);
+      }),
+    ),
+  );
+
+  if (errors.length > 0) {
+    logger.error({ errors }, "Health check failed");
+    throw new HealthCheckError("Health check failed", errors);
+  }
 }
 
 /**
@@ -56,7 +75,7 @@ function beforeShutdown() {
  * @returns A promise that resolves when all cleanup logic is completed.
  */
 function onShutdown() {
-  logger.info("cleanup finished, server is shutting down");
+  logger.info("Cleanup finished, server is shutting down");
   return Promise.all([
     // your cleaned promise logic
   ]);

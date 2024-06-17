@@ -1,11 +1,10 @@
 import rateLimit from "express-rate-limit";
-import httpStatus from "http-status";
 
-const { TOO_MANY_REQUESTS } = httpStatus;
+import getResponseStatusCode, {
+  TOO_MANY_REQUESTS,
+} from "../../utils/get-response-status-code";
 
-const code = httpStatus[`${TOO_MANY_REQUESTS}`];
-const name = httpStatus[`${TOO_MANY_REQUESTS}_NAME`];
-const message = httpStatus[`${TOO_MANY_REQUESTS}_MESSAGE`];
+const { code, name, message } = getResponseStatusCode(TOO_MANY_REQUESTS);
 
 const rateLimitMiddleware = rateLimit({
   windowMs: 15 * 60 * 1000,
