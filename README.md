@@ -1,5 +1,7 @@
 # Boilerplate Express Server
 
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/msobiecki/boilerplate-express-server/blob/master/LICENSE)
+
 This repository serves as a boilerplate for setting up an Express server with TypeScript. It includes essential middleware and tools for building a robust and maintainable server application.
 
 ## Table of Contents
