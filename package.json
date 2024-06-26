@@ -5,10 +5,10 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "npx tsc",
-    "start": "node dist/index.js",
-    "start:cluster": "node dist/cluster.js",
-    "dev": "nodemon src/index.ts",
-    "dev:cluster": "nodemon src/cluster.ts",
+    "start": "tsx dist/index.js",
+    "start:cluster": "tsx dist/cluster.js",
+    "dev": "tsx src/index.ts",
+    "dev:cluster": "tsx src/cluster.ts",
     "prepare": "husky"
   },
   "keywords": [],
@@ -46,9 +46,8 @@
     "eslint": "^8.57.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
-    "nodemon": "^3.1.3",
     "prettier": "^3.3.2",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.15.7",
     "typescript": "^5.4.5"
   }
 }

@@ -1,8 +1,9 @@
 import cluster from "node:cluster";
 import os from "node:os";
 
-import { taggedLogger } from "./lib/logger";
-import environment from "./environment";
+import environment from "@environment";
+
+import { taggedLogger } from "@lib/logger";
 
 const logger = taggedLogger("cluster");
 

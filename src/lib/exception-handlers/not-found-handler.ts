@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 
 import getResponseStatusCode, {
   NOT_FOUND,
-} from "../../utils/get-response-status-code";
+} from "@utils/get-response-status-code";
 
 const { code, name, message } = getResponseStatusCode(NOT_FOUND);
 

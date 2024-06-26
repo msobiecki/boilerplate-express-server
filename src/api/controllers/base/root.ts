@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { OK } from "http-status";
 
-import * as packageJson from "../../../../package.json";
+import * as packageJson from "@/package.json";
 
 const root = (request: Request, response: Response) => {
   response.status(OK).json({

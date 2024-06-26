@@ -1,6 +1,6 @@
 import cookieParser from "cookie-parser";
 
-import environment from "../../environment";
+import environment from "@environment";
 
 const { cookieSecret } = environment.app;
 

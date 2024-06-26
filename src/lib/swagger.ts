@@ -2,9 +2,9 @@ import express from "express";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 
-import * as packageJson from "../../package.json";
+import environment from "@environment";
 
-import environment from "../environment";
+import * as packageJson from "@/package.json";
 
 const { schema, hostname, port, routePrefix } = environment.app;
 

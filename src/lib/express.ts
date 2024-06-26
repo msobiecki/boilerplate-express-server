@@ -1,7 +1,7 @@
 import http from "node:http";
 import express, { Express, RequestHandler, ErrorRequestHandler } from "express";
 
-import environment from "../environment";
+import environment from "@environment";
 
 import terminus from "./terminus";
 

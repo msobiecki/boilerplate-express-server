@@ -1,7 +1,7 @@
 import NodePath from "node:path";
 import pino, { LoggerOptions, DestinationStream } from "pino";
 
-import environment from "../environment";
+import environment from "@environment";
 
 const { level, path } = environment.log;
 

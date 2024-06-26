@@ -2,7 +2,7 @@ import rateLimit from "express-rate-limit";
 
 import getResponseStatusCode, {
   TOO_MANY_REQUESTS,
-} from "../../utils/get-response-status-code";
+} from "@utils/get-response-status-code";
 
 const { code, name, message } = getResponseStatusCode(TOO_MANY_REQUESTS);
 

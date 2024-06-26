@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import NodePath from "node:path";
 
-import * as packageJson from "../package.json";
+import * as packageJson from "@/package.json";
 import {
   getOsEnvironment,
   getOsEnvironmentOptional,

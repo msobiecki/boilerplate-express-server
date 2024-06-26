@@ -1,6 +1,6 @@
 import express from "express";
 
-import * as baseController from "../../controllers/base";
+import * as baseController from "@controllers/base";
 
 const router = express.Router();
 

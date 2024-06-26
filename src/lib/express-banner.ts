@@ -1,6 +1,6 @@
-import { taggedLogger } from "./logger";
+import environment from "@environment";
 
-import environment from "../environment";
+import { taggedLogger } from "./logger";
 
 const { schema, hostname, port } = environment.app;
 

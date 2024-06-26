@@ -1,6 +1,9 @@
 import dotenv from "dotenv";
 
-import createExpress from "./lib/express";
+import createExpress from "@lib/express";
+import banner from "@lib/express-banner";
+import error from "@lib/express-error";
+import { errorHandler, notFoundHandler } from "@lib/exception-handlers";
 
 import {
   loggerMiddleware,
@@ -10,16 +13,10 @@ import {
   rateLimitMiddleware,
   helmetMiddleware,
   cookieMiddleware,
-} from "./lib/middlewares";
+} from "@lib/middlewares";
 
-import swaggerRouter from "./lib/swagger";
-
-import baseRouter from "./api/routes/base";
-
-import { errorHandler, notFoundHandler } from "./lib/exception-handlers";
-
-import banner from "./lib/express-banner";
-import error from "./lib/express-error";
+import swaggerRouter from "@lib/swagger";
+import baseRouter from "@routes/base";
 
 dotenv.config();
 

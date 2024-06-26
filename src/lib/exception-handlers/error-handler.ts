@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 
 import getResponseStatusCode, {
   INTERNAL_SERVER_ERROR,
-} from "../../utils/get-response-status-code";
+} from "@utils/get-response-status-code";
 
 const { code, name, message } = getResponseStatusCode(INTERNAL_SERVER_ERROR);
 
