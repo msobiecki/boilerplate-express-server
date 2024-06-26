@@ -1,13 +1,14 @@
 import dotenv from "dotenv";
 import NodePath from "node:path";
 
-import * as packageJson from "@/package.json";
 import {
   getOsEnvironment,
   getOsEnvironmentOptional,
   normalizePort,
   toNumber,
-} from "./lib/env";
+} from "@lib/env";
+
+import * as packageJson from "@/package.json";
 
 /**
  * Load .env file or for tests the .env.test file.
