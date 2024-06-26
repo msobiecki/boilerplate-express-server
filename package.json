@@ -7,8 +7,8 @@
     "build": "npx tsc",
     "start": "tsx dist/index.js",
     "start:cluster": "tsx dist/cluster.js",
-    "dev": "tsx src/index.ts",
-    "dev:cluster": "tsx src/cluster.ts",
+    "dev": "tsx watch src/index.ts",
+    "dev:cluster": "tsx watch src/cluster.ts",
     "prepare": "husky"
   },
   "keywords": [],
