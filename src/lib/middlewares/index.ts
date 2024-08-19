@@ -1,3 +1,4 @@
+export { default as bodyMiddleware } from "./body";
 export { default as cookieMiddleware } from "./cookie";
 export { default as corsMiddleware } from "./cors";
 export { default as helmetMiddleware } from "./helmet";

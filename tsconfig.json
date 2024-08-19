@@ -39,7 +39,7 @@
       "@routes/*": ["./src/api/routes/*"],
       "@validators/*": ["./src/api/validators/*"],
       "@lib/*": ["./src/lib/*"],
-      "@database/*": ["./src/lib/database/*"],
+      "@database/*": ["./src/database/*"],
       "@environment": ["./src/environment.ts"],
       "@utils/*": ["./src/utils/*"]
     },

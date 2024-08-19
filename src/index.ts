@@ -13,6 +13,7 @@ import {
   rateLimitMiddleware,
   helmetMiddleware,
   cookieMiddleware,
+  bodyMiddleware,
 } from "@lib/middlewares";
 
 import swaggerRouter from "@lib/swagger";
@@ -29,6 +30,7 @@ createExpress({
     rateLimitMiddleware,
     helmetMiddleware,
     cookieMiddleware,
+    bodyMiddleware,
   ],
   routers: [
     ["/", swaggerRouter],
