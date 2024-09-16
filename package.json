@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.4.1",
+    "@commitlint/config-conventional": "^19.5.0",
     "@msobiecki/eslint-config": "^8.8.33",
     "@types/cookie-parser": "^1.4.7",
     "@types/cors": "^2.8.17",
