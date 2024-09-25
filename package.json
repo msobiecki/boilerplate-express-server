@@ -2,6 +2,22 @@
   "name": "boilerplate-express-server",
   "version": "1.0.0",
   "description": "",
+  "description": "A boilerplate for express api applications",
+  "keywords": [
+    "boilerplate",
+    "express",
+    "node",
+    "api"
+  ],
+  "homepage": "https://github.com/msobiecki/boilerplate-express-server/",
+  "bugs": {
+    "url": "https://github.com/msobiecki/boilerplate-express-server/issues"
+  },
+  "repository": {
+    "url": "git://git@github.com:msobiecki/boilerplate-express-server.git"
+  },
+  "license": "MIT",
+  "author": "Michał Sobiecki <kontakt@codeshaker.pl>",
   "main": "dist/index.js",
   "scripts": {
     "build": "npx tsc",
@@ -11,9 +27,6 @@
     "dev:cluster": "tsx watch src/cluster.ts",
     "prepare": "husky"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@godaddy/terminus": "^4.12.1",
     "cookie-parser": "^1.4.6",
