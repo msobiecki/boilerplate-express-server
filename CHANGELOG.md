@@ -1,4 +1,8 @@
-# 1.1.0 (2024-10-15)
+## [1.1.1](https://github.com/msobiecki/boilerplate-express-server/compare/v1.1.0...v1.1.1) (2024-10-15)
+
+
+
+# [1.1.0](https://github.com/msobiecki/boilerplate-express-server/compare/8b6fde2d6fa67cc16f4588f4a6c1937980cf8a5e...v1.1.0) (2024-10-15)
 
 
 ### Features
