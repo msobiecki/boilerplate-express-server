@@ -1,0 +1,44 @@
+name: Run publish
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      packages: write
+      contents: write
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: https://npm.pkg.github.com
+          scope: "@msobiecki"
+
+      - name: Run version bump
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v5.2.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          skip-on-empty: false
+
+      - name: Run release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          release_name: ${{ steps.changelog.outputs.tag }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
