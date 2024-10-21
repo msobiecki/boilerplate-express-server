@@ -36,7 +36,7 @@
     "express-rate-limit": "^7.4.1",
     "helmet": "^8.0.0",
     "http-status": "^1.7.4",
-    "pino": "^9.4.0",
+    "pino": "^9.5.0",
     "pino-http": "^10.3.0",
     "pino-pretty": "^11.2.2",
     "prom-client": "^15.1.3",
