@@ -1,3 +1,7 @@
+## [1.1.4](https://github.com/msobiecki/boilerplate-express-server/compare/v1.1.3...v1.1.4) (2024-10-23)
+
+
+
 ## [1.1.3](https://github.com/msobiecki/boilerplate-express-server/compare/v1.1.2...v1.1.3) (2024-10-16)
 
 
