@@ -12,12 +12,12 @@ const { hostname, port } = environment.app;
 const createExpress = async ({
   middlewares,
   routers,
-  crons,
+  crons = [],
   exceptionHandlers: { notFoundHandler, errorHandler },
 }: {
   middlewares: RequestHandler[];
   routers: [string, RequestHandler][];
-  crons: CronJob<CronOnCompleteCommand, unknown>[];
+  crons?: CronJob<CronOnCompleteCommand, unknown>[];
   exceptionHandlers: {
     notFoundHandler: RequestHandler;
     errorHandler: ErrorRequestHandler;
