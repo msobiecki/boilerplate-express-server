@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 
@@ -7,11 +7,9 @@ import environment from "@environment";
 import * as packageJson from "@/package.json";
 
 const {
-  swagger: { schema, hostname, port },
+  swagger: { enabled, schema, hostname, port },
   app: { routePrefix },
 } = environment;
-
-const router = express.Router();
 
 const route = `${schema}://${hostname}:${port}${routePrefix}`;
 const swaggerDefinition = {
@@ -35,7 +33,18 @@ const options = {
 
 const swaggerSpec = swaggerJSDoc(options);
 
-router.use("/swagger", swaggerUi.serve);
-router.get("/swagger", swaggerUi.setup(swaggerSpec));
+const router = express.Router();
+
+if (enabled) {
+  router.use(
+    "/swagger",
+    (_request: Request, response: Response, next: NextFunction) => {
+      response.setHeader("Content-Security-Policy", `script-src 'self'`);
+      next();
+    },
+    swaggerUi.serve,
+  );
+  router.get("/swagger", swaggerUi.setup(swaggerSpec));
+}
 
 export default router;

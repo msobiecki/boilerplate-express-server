@@ -39,14 +39,15 @@ const environment = {
     cookieSecret: getOsEnvironment("APP_COOKIE_SIGN_SECRET"),
   },
   swagger: {
+    enabled: getOsEnvironmentOptional("SWAGGER_ENABLED"),
     schema:
-      getOsEnvironment("SWAGGER_PUBLIC_APP_SCHEMA") ??
+      getOsEnvironmentOptional("SWAGGER_PUBLIC_APP_SCHEMA") ||
       getOsEnvironment("APP_SCHEMA"),
     hostname:
-      getOsEnvironment("SWAGGER_PUBLIC_APP_HOSTNAME") ??
+      getOsEnvironmentOptional("SWAGGER_PUBLIC_APP_HOSTNAME") ||
       getOsEnvironment("APP_HOSTNAME"),
     port:
-      normalizePort(getOsEnvironment("SWAGGER_PLUBLIC_APP_PORT")) ??
+      getOsEnvironmentOptional("SWAGGER_PUBLIC_APP_PORT") ||
       normalizePort(getOsEnvironment("APP_PORT")),
   },
   cluster: {

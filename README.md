@@ -68,9 +68,10 @@ The application requires the following environment variables, which should be de
 | `APP_SCHEMA`                  | Http protocol schema of the application                        | http                       |
 | `APP_HOSTNAME`                | Hostname of the application                                    | localhost                  |
 | `APP_PORT`                    | Port number or Unix socket path the application will listen on | 3000                       |
-| `SWAGGER_PUBLIC_APP_SCHEMA`   | Public Http protocol schema displayed in Swagger docs          | http                       |
-| `SWAGGER_PUBLIC_PP_HOSTNAME`  | Public hostname for public Swagger documentation               | localhost                  |
-| `SWAGGER_PUBLIC_APP_PORT`     | Public port number for public Swagger documentation            | 3000                       |
+| `SWAGGER_ENABLED`             | Enable to display Swagger docs                                 | false                      |
+| `SWAGGER_PUBLIC_APP_SCHEMA`   | Public http protocol schema for Swagger docs                   | APP_SCHEMA                 |
+| `SWAGGER_PUBLIC_PP_HOSTNAME`  | Public hostname for public Swagger documentation               | APP_HOSTNAME               |
+| `SWAGGER_PUBLIC_APP_PORT`     | Public port number for public Swagger documentation            | APP_PORT                   |
 | `APP_ROUTE_PREFIX`            | Route prefix for the API                                       | /api                       |
 | `APP_COOKIE_SIGN_SECRET`      | Secret for signing cookies                                     | secret                     |
 | `CLUSTER_NUMBER_OF_INSTANCES` | Number of cluster instances                                    | 1                          |
