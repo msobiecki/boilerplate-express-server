@@ -8,6 +8,7 @@ import {
 import { checkDumpConnection } from "./health-checks";
 
 import { taggedLogger } from "./logger";
+import { closeSocket } from "./socket-management";
 
 const logger = taggedLogger("terminus");
 
@@ -43,19 +44,6 @@ async function healthCheck({ state }: { state: TerminusState }) {
 }
 
 /**
- * Handles the server signal for cleanup and shutdown.
- *
- * Logs the start of the cleanup process and performs necessary cleanup actions.
- * @returns A promise that resolves when all cleanup logic is completed.
- */
-function onSignal() {
-  logger.info("Server is starting cleanup");
-  return Promise.all([
-    // your clean logic, like closing database connections
-  ]);
-}
-
-/**
  * Executes tasks before the server shutdown.
  *
  * Logs the start of the pre-shutdown cleanup process and waits for a specified time before resolving.
@@ -69,6 +57,21 @@ function beforeShutdown() {
 }
 
 /**
+ * Handles the server signal for cleanup and shutdown.
+ *
+ * Logs the start of the cleanup process and performs necessary cleanup actions.
+ * @returns A promise that resolves when all cleanup logic is completed.
+ */
+function onSignal() {
+  logger.info("Server is starting cleanup");
+
+  // your clean logic, like closing database connections
+  const cleans = [Promise.resolve()];
+
+  return Promise.all(cleans);
+}
+
+/**
  * Handles the final cleanup and shutdown of the server.
  *
  * Logs the completion of cleanup and initiates the shutdown process.
@@ -76,9 +79,11 @@ function beforeShutdown() {
  */
 function onShutdown() {
   logger.info("Cleanup finished, server is shutting down");
-  return Promise.all([
-    // your cleaned promise logic
-  ]);
+
+  // your cleaned promise logic
+  const cleans = [closeSocket()];
+
+  return Promise.all(cleans);
 }
 
 const terminus = (server: Server) =>
@@ -86,8 +91,8 @@ const terminus = (server: Server) =>
     healthChecks: {
       "/healthcheck": healthCheck,
     },
-    onSignal,
     beforeShutdown,
+    onSignal,
     onShutdown,
   });
 

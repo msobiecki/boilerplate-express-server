@@ -111,17 +111,20 @@ export function toBool(value: string): boolean {
 /**
  * Normalizes a port number represented as a string to a valid numeric port.
  * @param port - The port number as a string.
- * @returns The normalized port number.
+ * @returns The normalized port number or sock.
  * @throws {TypeError} - If the provided port string is not a valid number.
  * @throws {Error} - If the provided port number is negative.
  */
-export function normalizePort(port: string): number {
-  const parsedPort = Number.parseInt(port, 10);
-  if (Number.isNaN(parsedPort)) {
-    throw new TypeError(`Environment variable port ${port} is invalid.`);
+export function normalizePort(port: string): number | string {
+  if (port.endsWith(".sock")) {
+    return port;
   }
-  if (parsedPort >= 0) {
+
+  const parsedPort = Number.parseInt(port, 10);
+
+  if (!Number.isNaN(parsedPort) && parsedPort >= 0) {
     return parsedPort;
   }
-  throw new Error(`Environment variable port ${port} is invalid.`);
+
+  throw new TypeError(`Environment variable port "${port}" is invalid.`);
 }

@@ -16,6 +16,12 @@
   "rules": {
     "global-require": "warn",
     "no-restricted-syntax": "warn",
-    "unicorn/prefer-top-level-await": "warn"
+    "unicorn/prefer-top-level-await": "warn",
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": false
+      }
+    ]
   }
 }
