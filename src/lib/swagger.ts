@@ -6,7 +6,10 @@ import environment from "@environment";
 
 import * as packageJson from "@/package.json";
 
-const { schema, hostname, port, routePrefix } = environment.app;
+const {
+  swagger: { schema, hostname, port },
+  app: { routePrefix },
+} = environment;
 
 const router = express.Router();
 

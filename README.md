@@ -62,17 +62,20 @@ To build and start the server for production:
 
 The application requires the following environment variables, which should be defined in a `.env` file:
 
-| Variable                      | Description                        | Default Value              |
-| ----------------------------- | ---------------------------------- | -------------------------- |
-| `APP_NAME`                    | Name of the application            | boilerplate-express-server |
-| `APP_SCHEMA`                  | Application schema (http/https)    | http                       |
-| `APP_HOSTNAME`                | Hostname of the application        | localhost                  |
-| `APP_PORT`                    | Port number the app will listen on | 3000                       |
-| `APP_ROUTE_PREFIX`            | Route prefix for the API           | /api                       |
-| `APP_COOKIE_SIGN_SECRET`      | Secret for signing cookies         | secret                     |
-| `CLUSTER_NUMBER_OF_INSTANCES` | Number of cluster instances        | 1                          |
-| `LOG_LEVEL`                   | Level of logging                   | info                       |
-| `LOG_PATH`                    | Path to log files                  | (empty)                    |
+| Variable                      | Description                                                    | Default Value              |
+| ----------------------------- | -------------------------------------------------------------- | -------------------------- |
+| `APP_NAME`                    | Name of the application                                        | boilerplate-express-server |
+| `APP_SCHEMA`                  | Http protocol schema of the application                        | http                       |
+| `APP_HOSTNAME`                | Hostname of the application                                    | localhost                  |
+| `APP_PORT`                    | Port number or Unix socket path the application will listen on | 3000                       |
+| `SWAGGER_PUBLIC_APP_SCHEMA`   | Public Http protocol schema displayed in Swagger docs          | http                       |
+| `SWAGGER_PUBLIC_PP_HOSTNAME`  | Public hostname for public Swagger documentation               | localhost                  |
+| `SWAGGER_PUBLIC_APP_PORT`     | Public port number for public Swagger documentation            | 3000                       |
+| `APP_ROUTE_PREFIX`            | Route prefix for the API                                       | /api                       |
+| `APP_COOKIE_SIGN_SECRET`      | Secret for signing cookies                                     | secret                     |
+| `CLUSTER_NUMBER_OF_INSTANCES` | Number of cluster instances                                    | 1                          |
+| `LOG_LEVEL`                   | Level of logging                                               | info                       |
+| `LOG_PATH`                    | Path to log files                                              | (empty)                    |
 
 ## Dependencies
 
@@ -81,6 +84,7 @@ The application requires the following environment variables, which should be de
 | `@godaddy/terminus`   | Graceful shutdown for your HTTP server.                    |
 | `cookie-parser`       | Parse Cookie header and populate `req.cookies`.            |
 | `cors`                | Enable Cross-Origin Resource Sharing (CORS).               |
+| `cron`                | A simple cron-like job scheduler for Node.js.              |
 | `dotenv`              | Loads environment variables from a `.env` file.            |
 | `express-prom-bundle` | Prometheus middleware for Express.                         |
 | `express-rate-limit`  | Basic IP rate-limiting middleware.                         |

@@ -38,6 +38,17 @@ const environment = {
     routePrefix: getOsEnvironment("APP_ROUTE_PREFIX"),
     cookieSecret: getOsEnvironment("APP_COOKIE_SIGN_SECRET"),
   },
+  swagger: {
+    schema:
+      getOsEnvironment("SWAGGER_PUBLIC_APP_SCHEMA") ??
+      getOsEnvironment("APP_SCHEMA"),
+    hostname:
+      getOsEnvironment("SWAGGER_PUBLIC_APP_HOSTNAME") ??
+      getOsEnvironment("APP_HOSTNAME"),
+    port:
+      normalizePort(getOsEnvironment("SWAGGER_PLUBLIC_APP_PORT")) ??
+      normalizePort(getOsEnvironment("APP_PORT")),
+  },
   cluster: {
     numberOfInstances: toNumber(
       getOsEnvironmentOptional("CLUSTER_NUMBER_OF_INSTANCES"),
