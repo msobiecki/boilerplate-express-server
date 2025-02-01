@@ -1,3 +1,12 @@
+# [1.6.0](https://github.com/msobiecki/boilerplate-express-server/compare/v1.5.3...v1.6.0) (2025-02-01)
+
+
+### Features
+
+* update env ([0e26de6](https://github.com/msobiecki/boilerplate-express-server/commit/0e26de60abeadb98fafb126c17e5c3dd79327c8c))
+
+
+
 ## [1.5.3](https://github.com/msobiecki/boilerplate-express-server/compare/v1.5.2...v1.5.3) (2025-01-28)
 
 
@@ -16,15 +25,6 @@
 ### Features
 
 * improve unix socket ([368a91e](https://github.com/msobiecki/boilerplate-express-server/commit/368a91e576c701a69d302ce42dae3d8c7a955ec6))
-
-
-
-# [1.4.0](https://github.com/msobiecki/boilerplate-express-server/compare/v1.3.0...v1.4.0) (2024-11-29)
-
-
-### Features
-
-* improve unix socket ([258327e](https://github.com/msobiecki/boilerplate-express-server/commit/258327eaf345525195179b795b9295c95666431f))
 
 
 
