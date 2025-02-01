@@ -5,6 +5,7 @@ import {
   getOsEnvironment,
   getOsEnvironmentOptional,
   normalizePort,
+  toBool,
   toNumber,
 } from "@lib/env";
 
@@ -39,7 +40,7 @@ const environment = {
     cookieSecret: getOsEnvironment("APP_COOKIE_SIGN_SECRET"),
   },
   swagger: {
-    enabled: getOsEnvironmentOptional("SWAGGER_ENABLED"),
+    enabled: toBool(getOsEnvironmentOptional("SWAGGER_ENABLED")),
     schema:
       getOsEnvironmentOptional("SWAGGER_PUBLIC_APP_SCHEMA") ||
       getOsEnvironment("APP_SCHEMA"),
