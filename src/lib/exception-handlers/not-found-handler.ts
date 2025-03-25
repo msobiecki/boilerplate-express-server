@@ -1,27 +1,20 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 
-import getResponseStatusCode, {
-  NOT_FOUND,
-} from "@utils/get-response-status-code";
-
-const { code, name, message } = getResponseStatusCode(NOT_FOUND);
+import { NOT_FOUND } from "@utils/get-response-status-code";
+import { ExceptionError } from "./error-handler";
 
 /**
  * Handles requests to routes that are not found (404 Not Found).
- * @param request - The HTTP request object.
- * @param response - The HTTP response object.
+ * @param _request - The HTTP request object (unused).
+ * @param _response - The HTTP response object (unused).
+ * @param next - The next middleware function.
  */
-function notFoundHandler(request: Request, response: Response) {
-  const { ip, method, originalUrl: url } = request;
-
-  request.log
-    .child({ tag: "exception-routes-error" })
-    .warn(`${ip} [${method}] ${url} ${code} - ${message}`);
-  response.status(NOT_FOUND).json({
-    code,
-    name,
-    message,
-  });
+function notFoundHandler(
+  _request: Request,
+  _response: Response,
+  next: NextFunction,
+) {
+  next(new ExceptionError("Route not found", NOT_FOUND));
 }
 
 export default notFoundHandler;

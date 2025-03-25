@@ -1,10 +1,19 @@
 import { NextFunction, Request, Response } from "express";
 
 import getResponseStatusCode, {
+  Code,
   INTERNAL_SERVER_ERROR,
 } from "@utils/get-response-status-code";
 
-const { code, name, message } = getResponseStatusCode(INTERNAL_SERVER_ERROR);
+export class ExceptionError extends Error {
+  statusCode: Code;
+
+  constructor(message: string, statusCode: Code) {
+    super(message);
+    this.statusCode = statusCode;
+    Error.captureStackTrace(this, this.constructor);
+  }
+}
 
 /**
  * Handles errors that occur during request processing.
@@ -26,16 +35,26 @@ function errorHandler(
 ) {
   const { ip, method, originalUrl: url } = request;
 
+  let statusCode: Code = INTERNAL_SERVER_ERROR;
+  let responseDetails = getResponseStatusCode(statusCode);
+  let issues: unknown;
+
+  if (error instanceof ExceptionError) {
+    statusCode = error.statusCode;
+    responseDetails = getResponseStatusCode(statusCode);
+    responseDetails.message = error.message;
+  }
+
+  const { code, message } = responseDetails;
+
   request.log
     .child({ tag: "exception-routes-error" })
-    .error(
-      { error },
-      `${ip} [${method}] ${url} ${code} - ${error.message ?? message}`,
-    );
-  response.status(INTERNAL_SERVER_ERROR).json({
-    code,
-    name,
+    .error({ error }, `${ip} [${method}] ${url} ${code} - ${message}`);
+  response.status(statusCode).json({
+    status: "error",
+    statusCode,
     message,
+    issues,
   });
 }
 
