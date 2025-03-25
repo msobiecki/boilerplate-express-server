@@ -33,8 +33,8 @@ createExpress({
     bodyMiddleware,
   ],
   routers: [
-    ["/", swaggerRouter],
     ["/", baseRouter],
+    ["/swagger", swaggerRouter],
   ],
   exceptionHandlers: {
     notFoundHandler,

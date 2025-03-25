@@ -1,20 +1,7 @@
-import express from "express";
+import { createRouter } from "@lib/core";
 
-import * as baseController from "@controllers/base";
+import base from "./base";
 
-const router = express.Router();
-
-/**
- * @swagger
- * /:
- *   get:
- *     description: Returns the name, version, and description of the API.
- *     tags:
- *       - base
- *     responses:
- *       200:
- *         description: Returns the name, version, and description of the API.
- */
-router.get("/", baseController.root);
+const router = createRouter([base]);
 
 export default router;
