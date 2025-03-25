@@ -1,7 +1,7 @@
 import { createRouter } from "@lib/core";
 
-import baseEndpoint from "./base";
+import base from "./base";
 
-const router = createRouter([baseEndpoint]);
+const router = createRouter([base]);
 
 export default router;
