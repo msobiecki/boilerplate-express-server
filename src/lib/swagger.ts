@@ -1,8 +1,10 @@
-import express, { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from "express";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 
 import environment from "@environment";
+
+import { createEndpoint, createMiddleware, createRouter } from "@lib/core";
 
 import * as packageJson from "@/package.json";
 
@@ -33,18 +35,28 @@ const options = {
 
 const swaggerSpec = swaggerJSDoc(options);
 
-const router = express.Router();
+const routes = [];
 
 if (enabled) {
-  router.use(
-    "/swagger",
-    (_request: Request, response: Response, next: NextFunction) => {
-      response.setHeader("Content-Security-Policy", `script-src 'self'`);
-      next();
-    },
-    swaggerUi.serve,
+  routes.push(
+    createMiddleware({
+      path: "/swagger",
+      middlewares: [
+        (_request: Request, response: Response, next: NextFunction) => {
+          response.setHeader("Content-Security-Policy", `script-src 'self'`);
+          next();
+        },
+        swaggerUi.serve,
+      ],
+    }),
+    createEndpoint({
+      path: "/swagger",
+      method: "GET",
+      handler: swaggerUi.setup(swaggerSpec),
+    }),
   );
-  router.get("/swagger", swaggerUi.setup(swaggerSpec));
 }
+
+const router = createRouter(routes);
 
 export default router;
