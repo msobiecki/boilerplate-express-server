@@ -1,24 +1,7 @@
-import { createRouter, createEndpoint } from "@lib/core";
+import { createRouter } from "@lib/core";
 
-import * as baseController from "@controllers/base";
+import baseEndpoint from "./base";
 
-const router = createRouter([
-  /**
-   * @swagger
-   * /:
-   *   get:
-   *     description: Returns the name, version, and description of the API.
-   *     tags:
-   *       - base
-   *     responses:
-   *       200:
-   *         description: Returns the name, version, and description of the API.
-   */
-  createEndpoint({
-    path: "/",
-    method: "GET",
-    handler: baseController.root,
-  }),
-]);
+const router = createRouter([baseEndpoint]);
 
 export default router;

@@ -7,7 +7,7 @@ export enum RequestMethodEnum {
 type RequestMethod = keyof typeof RequestMethodEnum;
 
 type Middleware = {
-  path: string;
+  path?: string;
   middlewares: (RequestHandler | RequestHandler[])[];
 };
 

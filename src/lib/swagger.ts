@@ -40,7 +40,6 @@ const routes = [];
 if (enabled) {
   routes.push(
     createMiddleware({
-      path: "/swagger",
       middlewares: [
         (_request: Request, response: Response, next: NextFunction) => {
           response.setHeader("Content-Security-Policy", `script-src 'self'`);
@@ -50,7 +49,7 @@ if (enabled) {
       ],
     }),
     createEndpoint({
-      path: "/swagger",
+      path: "/",
       method: "GET",
       handler: swaggerUi.setup(swaggerSpec),
     }),

@@ -62,7 +62,11 @@ const createRouter = (routes: Routes) => {
     if (type === "middleware") {
       switch (MiddlewareRequestMethodEnum[`${method}`]) {
         case MiddlewareRequestMethodEnum.USE: {
-          router.use(path, ...middlewares);
+          if (path) {
+            router.use(path, ...middlewares);
+          } else {
+            router.use(...middlewares);
+          }
           break;
         }
         default: {
