@@ -54,7 +54,7 @@ const createRouter = (routes: Routes) => {
           break;
         }
         default: {
-          throw new Error(`Invalid HTTP method: ${method} for path: ${path}`);
+          throw new Error(`Invalid endpoint method: ${method} for path: ${path}`);
         }
       }
     }
