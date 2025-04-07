@@ -36,15 +36,15 @@ const swaggerSpec = swaggerJSDoc(options);
 const router = express.Router();
 
 if (enabled) {
-  router.use(
-    "/swagger",
+    router.use(
+    "/",
     (_request: Request, response: Response, next: NextFunction) => {
       response.setHeader("Content-Security-Policy", `script-src 'self'`);
       next();
     },
     swaggerUi.serve,
+    swaggerUi.setup(swaggerSpec),
   );
-  router.get("/swagger", swaggerUi.setup(swaggerSpec));
 }
 
 export default router;
