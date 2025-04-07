@@ -30,7 +30,7 @@ const environment = {
   isTest: process.env.NODE_ENV === "test",
   isDevelopment: process.env.NODE_ENV === "development",
   app: {
-    name: getOsEnvironment("APP_NAME"),
+    name: packageJson.name,
     version: packageJson.version,
     description: packageJson.description,
     schema: getOsEnvironment("APP_SCHEMA"),
