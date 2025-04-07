@@ -94,18 +94,54 @@ export function getOsPaths(key: string): string[] {
  * Converts a string to a number.
  * @param value - The string value to convert to a number.
  * @returns The parsed number.
+ * @throws TypeError if the value cannot be converted to a valid number.
  */
 export function toNumber(value: string): number {
-  return Number.parseInt(value, 10);
+  const number = Number.parseInt(value, 10);
+
+  if (Number.isNaN(number)) {
+    throw new TypeError(
+      `Invalid number value: "${value}". Unable to convert to a number.`,
+    );
+  }
+
+  return number;
 }
 
 /**
  * Converts a string representation of a boolean to a boolean value.
  * @param value - The string representation of the boolean value.
  * @returns The boolean value parsed from the input string.
+ * @throws TypeError if the input string is not a valid boolean representation.
  */
 export function toBool(value: string): boolean {
-  return value === "true";
+  if (value === "true") {
+    return true;
+  }
+  if (value === "false") {
+    return false;
+  }
+
+  throw new TypeError(
+    `Invalid boolean value: ${value}. Unable to convert to a boolean.`,
+  );
+}
+
+/**
+ * Converts a string representation of null to the null value.
+ * @param value - The string representation of the null value.
+ * @returns null if the input string is "null", otherwise throws a TypeError.
+ * @throws TypeError if the value is not "null".
+ */
+export function toNull(value: string): null {
+  if (value === "null") {
+    // eslint-disable-next-line unicorn/no-null
+    return null;
+  }
+
+  throw new TypeError(
+    `Invalid nullable value: ${value}. Unable to convert to a nullable`,
+  );
 }
 
 /**
