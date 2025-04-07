@@ -11,7 +11,7 @@ const {
   app: { routePrefix },
 } = environment;
 
-const route = `${schema}://${hostname}:${port}${routePrefix}`;
+const route = `${schema}://${hostname}${port ? `:${port}` : ""}${routePrefix}`;
 const swaggerDefinition = {
   openapi: "3.0.0",
   info: {
