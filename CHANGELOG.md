@@ -1,3 +1,7 @@
+## [1.7.2](https://github.com/msobiecki/boilerplate-express-server/compare/v1.7.1...v1.7.2) (2025-04-07)
+
+
+
 ## [1.7.1](https://github.com/msobiecki/boilerplate-express-server/compare/v1.7.0...v1.7.1) (2025-04-07)
 
 
@@ -16,15 +20,6 @@
 
 
 ## [1.6.1](https://github.com/msobiecki/boilerplate-express-server/compare/v1.6.0...v1.6.1) (2025-03-23)
-
-
-
-# [1.6.0](https://github.com/msobiecki/boilerplate-express-server/compare/v1.5.3...v1.6.0) (2025-02-01)
-
-
-### Features
-
-* update env ([0e26de6](https://github.com/msobiecki/boilerplate-express-server/commit/0e26de60abeadb98fafb126c17e5c3dd79327c8c))
 
 
 
