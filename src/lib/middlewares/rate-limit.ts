@@ -7,7 +7,22 @@ const rateLimitMiddleware = rateLimit({
   windowMs: 15 * 60 * 1000,
   limit: 100,
   keyGenerator: (request) => {
-    const ip = request.ip || request.socket.remoteAddress || "unknown";
+    let ip =
+      request.ip ||
+      request.headers["x-forwarded-for"] ||
+      request.socket.remoteAddress ||
+      "unknown";
+
+    if (Array.isArray(ip)) {
+      [ip] = ip;
+    }
+
+    if (ip === "unknown") {
+      request.log
+        .child({ tag: "rate-limit-middleware" })
+        .warn("Could not determine client IP");
+    }
+
     return ip.replace(/:\d+[^:]*$/, "");
   },
   handler: (request, response, next) => {
