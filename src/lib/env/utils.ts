@@ -93,7 +93,7 @@ export function getOsPaths(key: string): string[] {
 /**
  * Converts a string to a number.
  * @param value - The string value to convert to a number.
- * @returns The parsed number.
+ * @returns The number value parsed from the input string.
  * @throws TypeError if the value cannot be converted to a valid number.
  */
 export function toNumber(value: string): number {
@@ -109,10 +109,10 @@ export function toNumber(value: string): number {
 }
 
 /**
- * Converts a string representation of a boolean to a boolean value.
- * @param value - The string representation of the boolean value.
+ * Converts a string to a boolean.
+ * @param value - The string value to convert to a boolean.
  * @returns The boolean value parsed from the input string.
- * @throws TypeError if the input string is not a valid boolean representation.
+ * @throws TypeError if the value cannot be converted to a valid boolean.
  */
 export function toBool(value: string): boolean {
   if (value === "true") {
@@ -128,10 +128,10 @@ export function toBool(value: string): boolean {
 }
 
 /**
- * Converts a string representation of null to the null value.
- * @param value - The string representation of the null value.
- * @returns null if the input string is "null", otherwise throws a TypeError.
- * @throws TypeError if the value is not "null".
+ * Converts a string to a nullable.
+ * @param value - The string value to convert to a nullable.
+ * @returns The null value parsed from the input string.
+ * @throws TypeError if the value cannot be converted to a valid nullable.
  */
 export function toNull(value: string): null {
   if (value === "null") {
