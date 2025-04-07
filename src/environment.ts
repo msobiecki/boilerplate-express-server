@@ -47,9 +47,18 @@ const environment = {
     hostname:
       getOsEnvironmentOptional("SWAGGER_PUBLIC_APP_HOSTNAME") ||
       getOsEnvironment("APP_HOSTNAME"),
-    port:
-      getOsEnvironmentOptional("SWAGGER_PUBLIC_APP_PORT") ||
-      normalizePort(getOsEnvironment("APP_PORT")),
+    port: (() => {
+       const swaggerPort = getOsEnvironmentOptional("SWAGGER_PUBLIC_APP_PORT");
+       const appPort = getOsEnvironment("APP_PORT");
+
+       if (swaggerPort) {
+         return swaggerPort === "null"
+           ? toNull(swaggerPort)
+           : normalizePort(swaggerPort);
+       }
+
+       return normalizePort(appPort);
+    })(),
   },
   cluster: {
     numberOfInstances: toNumber(
