@@ -1,3 +1,7 @@
+## [1.9.5](https://github.com/msobiecki/boilerplate-express-server/compare/v1.9.4...v1.9.5) (2025-04-07)
+
+
+
 ## [1.9.4](https://github.com/msobiecki/boilerplate-express-server/compare/v1.9.3...v1.9.4) (2025-04-07)
 
 
@@ -11,15 +15,6 @@
 
 
 ## [1.9.1](https://github.com/msobiecki/boilerplate-express-server/compare/v1.9.0...v1.9.1) (2025-04-07)
-
-
-
-# [1.9.0](https://github.com/msobiecki/boilerplate-express-server/compare/v1.8.0...v1.9.0) (2025-04-07)
-
-
-### Features
-
-* change rate limitter ([73d27b9](https://github.com/msobiecki/boilerplate-express-server/commit/73d27b9da8c644089308d92de52ffad17462c071))
 
 
 
