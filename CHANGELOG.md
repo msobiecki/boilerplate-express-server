@@ -1,3 +1,7 @@
+## [1.9.3](https://github.com/msobiecki/boilerplate-express-server/compare/v1.9.2...v1.9.3) (2025-04-07)
+
+
+
 ## [1.9.2](https://github.com/msobiecki/boilerplate-express-server/compare/v1.9.1...v1.9.2) (2025-04-07)
 
 
@@ -21,10 +25,6 @@
 ### Features
 
 * remove env APP_NAME ([025455b](https://github.com/msobiecki/boilerplate-express-server/commit/025455b2d67bbc52e43b34a32432fda7561cc949))
-
-
-
-## [1.7.2](https://github.com/msobiecki/boilerplate-express-server/compare/v1.7.1...v1.7.2) (2025-04-07)
 
 
 
