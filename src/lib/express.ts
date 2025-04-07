@@ -37,7 +37,7 @@ const createExpress = async ({
     cron.start();
   }
 
-  app.all("*", notFoundHandler);
+  app.all("*splat", notFoundHandler);
   app.use(errorHandler);
 
   const server = http.createServer(app);
