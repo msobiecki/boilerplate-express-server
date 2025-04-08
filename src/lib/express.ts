@@ -45,7 +45,9 @@ const createExpress = async ({
 
   if (typeof port === "string" && port.endsWith(".sock")) {
     await closeSocket();
-    server.listen(port);
+    server.listen(port, () => {
+      chmodSync(port, 0o770);
+    });
   } else if (typeof port === "number") {
     server.listen(port, hostname);
   } else {
