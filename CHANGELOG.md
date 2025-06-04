@@ -1,3 +1,7 @@
+## [1.9.13](https://github.com/msobiecki/boilerplate-express-server/compare/v1.9.12...v1.9.13) (2025-06-04)
+
+
+
 ## [1.9.12](https://github.com/msobiecki/boilerplate-express-server/compare/v1.9.11...v1.9.12) (2025-06-04)
 
 
@@ -11,10 +15,6 @@
 
 
 ## [1.9.9](https://github.com/msobiecki/boilerplate-express-server/compare/v1.9.8...v1.9.9) (2025-04-08)
-
-
-
-## [1.9.8](https://github.com/msobiecki/boilerplate-express-server/compare/v1.9.7...v1.9.8) (2025-04-07)
 
 
 
