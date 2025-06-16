@@ -58,7 +58,7 @@
     "@types/swagger-ui-express": "^4.1.8",
     "eslint": "^8.57.1",
     "husky": "^9.1.7",
-    "lint-staged": "^16.1.0",
+    "lint-staged": "^16.1.2",
     "prettier": "^3.5.3",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3"
