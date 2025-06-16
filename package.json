@@ -51,7 +51,7 @@
     "@msobiecki/eslint-config": "^8.17.2",
     "@types/cookie-parser": "^1.4.9",
     "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.2",
+    "@types/express": "^5.0.3",
     "@types/node": "^22.15.30",
     "@types/request-ip": "^0.0.41",
     "@types/swagger-jsdoc": "^6.0.4",
