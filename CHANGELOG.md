@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/msobiecki/boilerplate-express-server/compare/v1.14.0...v1.15.0) (2025-07-22)
+
+
+### Features
+
+* improve semantic release ([6a18911](https://github.com/msobiecki/boilerplate-express-server/commit/6a189113d449661cbe1510edfaf0fe7143215fda))
+
 # [1.14.0](https://github.com/msobiecki/boilerplate-express-server/compare/v1.13.0...v1.14.0) (2025-07-21)
 
 
