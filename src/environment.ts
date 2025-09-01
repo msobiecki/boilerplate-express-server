@@ -49,16 +49,16 @@ const environment = {
       getOsEnvironmentOptional("SWAGGER_PUBLIC_APP_HOSTNAME") ||
       getOsEnvironment("APP_HOSTNAME"),
     port: (() => {
-       const swaggerPort = getOsEnvironmentOptional("SWAGGER_PUBLIC_APP_PORT");
-       const appPort = getOsEnvironment("APP_PORT");
+      const swaggerPort = getOsEnvironmentOptional("SWAGGER_PUBLIC_APP_PORT");
+      const appPort = getOsEnvironment("APP_PORT");
 
-       if (swaggerPort) {
-         return swaggerPort === "null"
-           ? toNull(swaggerPort)
-           : normalizePort(swaggerPort);
-       }
+      if (swaggerPort) {
+        return swaggerPort === "null"
+          ? toNull(swaggerPort)
+          : normalizePort(swaggerPort);
+      }
 
-       return normalizePort(appPort);
+      return normalizePort(appPort);
     })(),
   },
   cluster: {
