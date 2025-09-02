@@ -1,7 +1,7 @@
 {
   "name": "boilerplate-express-server",
   "private": true,
-  "version": "1.16.0",
+  "version": "1.17.0",
   "description": "A boilerplate for express api applications",
   "keywords": [
     "boilerplate",
