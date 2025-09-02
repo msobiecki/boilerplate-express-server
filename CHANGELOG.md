@@ -1,3 +1,11 @@
+# [1.18.0](https://github.com/msobiecki/boilerplate-express-server/compare/v1.17.0...v1.18.0) (2025-09-02)
+
+
+### Features
+
+* update ([2eafe52](https://github.com/msobiecki/boilerplate-express-server/commit/2eafe525beabb994536c23320df5aa91bc639967))
+* update ([ecd8706](https://github.com/msobiecki/boilerplate-express-server/commit/ecd87065f80b3340ac6ec3c75562ec5e48fb1599))
+
 # [1.17.0](https://github.com/msobiecki/boilerplate-express-server/compare/v1.16.0...v1.17.0) (2025-09-01)
 
 
