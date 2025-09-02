@@ -36,7 +36,7 @@ const swaggerSpec = swaggerJSDoc(options);
 const router = express.Router();
 
 if (enabled) {
-    router.use(
+  router.use(
     "/",
     (_request: Request, response: Response, next: NextFunction) => {
       response.setHeader("Content-Security-Policy", `script-src 'self'`);
