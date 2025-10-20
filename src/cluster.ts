@@ -21,11 +21,11 @@ if (cluster.isPrimary) {
   const handleSignal = (signal: string) => {
     const workers = cluster.workers && Object.values(cluster.workers);
     if (workers && workers.length > 0) {
-      for (const worker of workers) {
+      workers.forEach((worker) => {
         if (worker) {
           worker.send(signal);
         }
-      }
+      });
     }
   };
 
@@ -49,5 +49,9 @@ if (cluster.isPrimary) {
   process.on("SIGTERM", () => handleSignal("SIGTERM"));
   process.on("SIGINT", () => handleSignal("SIGINT"));
 } else {
-  require("./index");
+  // eslint-disable-next-line unicorn/prefer-top-level-await
+  import("./index.js").catch((error) => {
+    logger.error("Failed to start worker:", error);
+    throw error;
+  });
 }

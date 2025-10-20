@@ -1,4 +1,4 @@
-import dotenv from "dotenv";
+import { config } from "dotenv";
 import NodePath from "node:path";
 
 import {
@@ -15,7 +15,7 @@ import * as packageJson from "@/package.json";
 /**
  * Load .env file or for tests the .env.test file.
  */
-dotenv.config({
+config({
   path: NodePath.join(
     process.cwd(),
     `.env${process.env.NODE_ENV === "test" ? ".test" : ""}`,

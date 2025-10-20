@@ -11,7 +11,6 @@ export class ExceptionError extends Error {
   constructor(message: string, statusCode: Code) {
     super(message);
     this.statusCode = statusCode;
-    Error.captureStackTrace(this, this.constructor);
   }
 }
 

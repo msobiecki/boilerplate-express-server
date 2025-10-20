@@ -26,17 +26,17 @@ const createExpress = async ({
 }) => {
   const app = express();
 
-  for (const middleware of middlewares) {
+  middlewares.forEach((middleware) => {
     app.use(middleware);
-  }
+  });
 
-  for (const [route, router] of routers) {
+  routers.forEach(([route, router]) => {
     app.use(`${environment.app.routePrefix}${route}`, router);
-  }
+  });
 
-  for (const cron of crons) {
+  crons.forEach((cron) => {
     cron.start();
-  }
+  });
 
   app.all("*splat", notFoundHandler);
   app.use(errorHandler);

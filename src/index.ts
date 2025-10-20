@@ -1,5 +1,3 @@
-import dotenv from "dotenv";
-
 import createExpress from "@lib/express";
 import banner from "@lib/express-banner";
 import error from "@lib/express-error";
@@ -18,8 +16,6 @@ import {
 
 import swaggerRouter from "@lib/swagger";
 import baseRouter from "@routes/base";
-
-dotenv.config();
 
 createExpress({
   middlewares: [
@@ -42,4 +38,5 @@ createExpress({
   },
 })
   .then(banner)
+  // eslint-disable-next-line unicorn/prefer-top-level-await
   .catch(error);

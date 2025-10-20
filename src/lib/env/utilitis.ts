@@ -69,13 +69,9 @@ export function getOsPath(key: string): string {
  * @param [delimiter] - The delimiter used to split the environment variable value into an array. Defaults to ','.
  * @returns An array containing the values of the specified environment variable, or an empty array if the variable is not set.
  */
-export function getOsEnvironmentArray(
-  key: string,
-  delimiter: string = ",",
-): string[] {
-  return (
-    (process.env[`${key}`] && process.env[`${key}`]!.split(delimiter)) || []
-  );
+export function getOsEnvironmentArray(key: string, delimiter = ","): string[] {
+  const value = process.env[`${key}`];
+  return value ? value.split(delimiter) : [];
 }
 
 /**
