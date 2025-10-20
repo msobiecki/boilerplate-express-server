@@ -1,3 +1,11 @@
+# [1.20.0](https://github.com/msobiecki/boilerplate-express-server/compare/v1.19.0...v1.20.0) (2025-10-20)
+
+
+### Features
+
+* update eslint 9 ([373c8c6](https://github.com/msobiecki/boilerplate-express-server/commit/373c8c68c4299a1e86b301e4190403f6c6ef0cea))
+* update eslint 9 ([bfe244f](https://github.com/msobiecki/boilerplate-express-server/commit/bfe244f48e61efd2206b8d3c4e9d67d17214be5a))
+
 # [1.19.0](https://github.com/msobiecki/boilerplate-express-server/compare/v1.18.0...v1.19.0) (2025-10-20)
 
 
