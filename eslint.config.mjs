@@ -11,18 +11,4 @@ export default defineConfig([
   bestPracticePreset,
   nodePreset,
   importPreset,
-  {
-    languageOptions: {
-      parserOptions: {
-        ecmaVersion: 2021,
-      },
-    },
-    settings: {
-      "import/resolver": {
-        typescript: {
-          alwaysTryTypes: true,
-        },
-      },
-    },
-  },
 ]);
