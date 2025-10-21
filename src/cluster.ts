@@ -51,7 +51,9 @@ if (cluster.isPrimary) {
 } else {
   // eslint-disable-next-line unicorn/prefer-top-level-await
   import("./index.js").catch((error) => {
-    logger.error("Failed to start worker:", error);
+    logger.error(
+      `Worker ${process.pid} failed to start application: ${error.message}`,
+    );
     throw error;
   });
 }
