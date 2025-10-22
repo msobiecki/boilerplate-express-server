@@ -1,6 +1,6 @@
-import express, { Request, Response, NextFunction } from "express";
+import { Router, Request, Response, NextFunction } from "express";
 import swaggerJSDoc from "swagger-jsdoc";
-import swaggerUi from "swagger-ui-express";
+import { setup, serve } from "swagger-ui-express";
 
 import environment from "@environment";
 
@@ -33,7 +33,7 @@ const options = {
 
 const swaggerSpec = swaggerJSDoc(options);
 
-const router = express.Router();
+const router = Router();
 
 if (enabled) {
   router.use(
@@ -42,8 +42,8 @@ if (enabled) {
       response.setHeader("Content-Security-Policy", `script-src 'self'`);
       next();
     },
-    swaggerUi.serve,
-    swaggerUi.setup(swaggerSpec),
+    serve,
+    setup(swaggerSpec),
   );
 }
 

@@ -1,4 +1,4 @@
-import rateLimit from "express-rate-limit";
+import { rateLimit } from "express-rate-limit";
 
 import { ExceptionError } from "@lib/exception-handlers/error-handler";
 import { TOO_MANY_REQUESTS } from "@utils/get-response-status-code";

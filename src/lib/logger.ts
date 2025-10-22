@@ -1,5 +1,5 @@
 import NodePath from "node:path";
-import pino, { LoggerOptions, DestinationStream } from "pino";
+import { pino, transport, LoggerOptions, DestinationStream } from "pino";
 
 import environment from "@environment";
 
@@ -9,7 +9,7 @@ const loggerOptions: LoggerOptions = {
   level,
 };
 
-const fileTransport = pino.transport({
+const fileTransport = transport({
   target: "pino/file",
   options: {
     messageKey: "message",
@@ -19,7 +19,7 @@ const fileTransport = pino.transport({
   },
 }) as DestinationStream;
 
-const stdoutTransport = pino.transport({
+const stdoutTransport = transport({
   target: "pino-pretty",
   options: {
     colorize: true,

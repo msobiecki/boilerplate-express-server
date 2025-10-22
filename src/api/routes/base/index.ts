@@ -1,8 +1,8 @@
-import express from "express";
+import { Router } from "express";
 
 import * as baseController from "@controllers/base";
 
-const router = express.Router();
+const router = Router();
 
 /**
  * @swagger
