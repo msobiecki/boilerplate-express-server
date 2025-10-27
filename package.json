@@ -52,7 +52,7 @@
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
-    "@msobiecki/eslint-config": "^9.9.0",
+    "@msobiecki/eslint-config": "^9.11.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/cookie-parser": "^1.4.9",
