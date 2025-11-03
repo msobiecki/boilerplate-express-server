@@ -64,7 +64,7 @@
     "@types/swagger-ui-express": "^4.1.8",
     "eslint": "^9.39.0",
     "husky": "^9.1.7",
-    "lint-staged": "^16.2.4",
+    "lint-staged": "^16.2.6",
     "prettier": "^3.6.2",
     "semantic-release": "^24.2.7",
     "tsx": "^4.20.6",
