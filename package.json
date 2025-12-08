@@ -36,7 +36,7 @@
     "cors": "^2.8.5",
     "cron": "^4.3.5",
     "dotenv": "^17.2.3",
-    "express": "^5.2.0",
+    "express": "^5.2.1",
     "express-prom-bundle": "^8.0.0",
     "express-rate-limit": "^8.2.1",
     "helmet": "^8.1.0",
