@@ -1,4 +1,4 @@
-import { rateLimit } from "express-rate-limit";
+import { ipKeyGenerator, rateLimit } from "express-rate-limit";
 
 import { ExceptionError } from "@lib/exception-handlers/error-handler";
 import { TOO_MANY_REQUESTS } from "@utils/get-response-status-code";
@@ -23,7 +23,7 @@ const rateLimitMiddleware = rateLimit({
         .warn("Could not determine client IP");
     }
 
-    return ip.replace(/:\d+[^:]*$/, "");
+    return ipKeyGenerator(ip.replace(/:\d+[^:]*$/, ""));
   },
   handler: (request, response, next) => {
     request.log
