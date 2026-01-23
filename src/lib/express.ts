@@ -13,17 +13,32 @@ const { hostname, port } = environment.app;
 const createExpress = async ({
   middlewares,
   routers,
-  crons = [],
+  crons,
   exceptionHandlers: { notFoundHandler, errorHandler },
+  terminusProcesses: overrideTerminusProcesses,
 }: {
   middlewares: RequestHandler[];
   routers: [string, RequestHandler][];
   crons?: CronJob<CronOnCompleteCommand, unknown>[];
   exceptionHandlers: {
-    notFoundHandler: RequestHandler;
-    errorHandler: ErrorRequestHandler;
+    notFoundHandler?: RequestHandler;
+    errorHandler?: ErrorRequestHandler;
+  };
+  terminusProcesses?: {
+    healthCheckProcesses?: (() => Promise<void>)[];
+    beforeShutdownProcesses?: (() => Promise<void>)[];
+    onSignalProcesses?: (() => Promise<void>)[];
+    onShutdownProcesses?: (() => Promise<void>)[];
   };
 }) => {
+  const terminusProcesses = {
+    healthCheckProcesses: [],
+    beforeShutdownProcesses: [],
+    onSignalProcesses: [],
+    onShutdownProcesses: [],
+    ...overrideTerminusProcesses,
+  };
+
   const app = express();
 
   middlewares.forEach((middleware) => {
@@ -34,15 +49,27 @@ const createExpress = async ({
     app.use(`${environment.app.routePrefix}${route}`, router);
   });
 
-  crons.forEach((cron) => {
+  crons?.forEach((cron) => {
     cron.start();
   });
 
-  app.all("*splat", notFoundHandler);
-  app.use(errorHandler);
+  if (notFoundHandler) {
+    app.all("*splat", notFoundHandler);
+  }
+  if (errorHandler) {
+    app.use(errorHandler);
+  }
 
   const server = http.createServer(app);
-  terminus(server);
+  terminus(server, {
+    healthCheckProcesses: [...terminusProcesses.healthCheckProcesses],
+    beforeShutdownProcesses: [...terminusProcesses.beforeShutdownProcesses],
+    onSignalProcesses: [...terminusProcesses.onSignalProcesses],
+    onShutdownProcesses: [
+      closeSocket,
+      ...terminusProcesses.onShutdownProcesses,
+    ],
+  });
 
   if (typeof port === "string" && port.endsWith(".sock")) {
     await closeSocket();
