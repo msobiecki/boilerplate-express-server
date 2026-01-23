@@ -1,3 +1,10 @@
+# [1.23.0](https://github.com/msobiecki/boilerplate-express-server/compare/v1.22.0...v1.23.0) (2026-01-23)
+
+
+### Features
+
+* change init express terminus logic ([50ee16e](https://github.com/msobiecki/boilerplate-express-server/commit/50ee16e322f55e7407f18d1473bfff3e7b88b098))
+
 # [1.22.0](https://github.com/msobiecki/boilerplate-express-server/compare/v1.21.0...v1.22.0) (2025-10-22)
 
 
