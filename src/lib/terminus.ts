@@ -5,95 +5,102 @@ import {
   TerminusState,
 } from "@godaddy/terminus";
 
-import { checkDumpConnection } from "./health-checks";
-
 import { taggedLogger } from "./logger";
-import { closeSocket } from "./socket-management";
 
 const logger = taggedLogger("terminus");
 
 /**
  * Performs a health check based on the server's state.
- * @param root - The root object containing the server state.
- * @param root.state - The state of the server.
- * @returns A promise that resolves, optionally with a value to be included in the health check response.
+ * @param processes - An array of asynchronous functions representing health check processes.
+ * @returns A function that performs health checks and throws an error if any check fails.
  */
-async function healthCheck({ state }: { state: TerminusState }) {
-  const { isShuttingDown } = state;
-  if (isShuttingDown) {
-    logger.info("Server is shutting down");
-  }
+function healthCheck(processes: (() => Promise<void>)[] = []) {
+  return async ({ state }: { state: TerminusState }) => {
+    const { isShuttingDown } = state;
+    if (isShuttingDown) {
+      logger.info("Server is shutting down");
+    }
 
-  // optionally include a resolve value to be included as
-  // info in the health check response
-  const checks = [checkDumpConnection()];
-  const errors: Error[] = [];
+    const errors: Error[] = [];
 
-  await Promise.all(
-    checks.map((promise) =>
-      promise.catch((error: Error) => {
-        errors.push(error);
-      }),
-    ),
-  );
+    await Promise.all(
+      processes.map((process) =>
+        process().catch((error: Error) => {
+          errors.push(error);
+        }),
+      ),
+    );
 
-  if (errors.length > 0) {
-    logger.error({ errors }, "Health check failed");
-    throw new HealthCheckError("Health check failed", errors);
-  }
+    if (errors.length > 0) {
+      logger.error({ errors }, "Health check failed");
+      throw new HealthCheckError("Health check failed", errors);
+    }
+  };
 }
 
 /**
  * Executes tasks before the server shutdown.
  *
- * Logs the start of the pre-shutdown cleanup process and waits for a specified time before resolving.
- * @returns A promise that resolves after a 5-second delay.
+ * Logs the start of the pre-shutdown cleanup process and executes provided asynchronous processes.
+ * @param processes - An array of asynchronous functions to execute before shutdown.
+ * @returns A promise that resolves when all provided processes have completed.
  */
-function beforeShutdown() {
-  logger.info("Server before is starting cleanup");
-  return new Promise((resolve) => {
-    setTimeout(resolve, 5000);
-  });
+function beforeShutdown(processes: (() => Promise<void>)[] = []) {
+  return async () => {
+    logger.info("Server is starting pre-shutdown cleanup");
+    return Promise.all(processes.map((process) => process()));
+  };
 }
 
 /**
  * Handles the server signal for cleanup and shutdown.
  *
- * Logs the start of the cleanup process and performs necessary cleanup actions.
- * @returns A promise that resolves when all cleanup logic is completed.
+ * Logs the start of the cleanup process and executes provided asynchronous processes.
+ * @param processes - An array of asynchronous functions to execute on signal.
+ * @returns A promise that resolves when all provided processes have completed.
  */
-function onSignal() {
-  logger.info("Server is starting cleanup");
-
-  // your clean logic, like closing database connections
-  const cleans = [Promise.resolve()];
-
-  return Promise.all(cleans);
+function onSignal(processes: (() => Promise<void>)[] = []) {
+  return async () => {
+    logger.info("Server is starting cleanup");
+    return Promise.all(processes.map((process) => process()));
+  };
 }
 
 /**
  * Handles the final cleanup and shutdown of the server.
  *
- * Logs the completion of cleanup and initiates the shutdown process.
- * @returns A promise that resolves when all cleanup logic is completed.
+ * Logs the completion of the cleanup process and executes provided asynchronous processes.
+ * @param processes - An array of asynchronous functions to execute on shutdown.
+ * @returns A promise that resolves when all provided processes have completed.
  */
-function onShutdown() {
-  logger.info("Cleanup finished, server is shutting down");
-
-  // your cleaned promise logic
-  const cleans = [closeSocket()];
-
-  return Promise.all(cleans);
+function onShutdown(processes: (() => Promise<void>)[] = []) {
+  return async () => {
+    logger.info("Cleanup finished, server is shutting down");
+    return Promise.all(processes.map((process) => process()));
+  };
 }
 
-const terminus = (server: Server) =>
+const terminus = (
+  server: Server,
+  {
+    healthCheckProcesses,
+    beforeShutdownProcesses,
+    onSignalProcesses,
+    onShutdownProcesses,
+  }: {
+    healthCheckProcesses?: (() => Promise<void>)[];
+    beforeShutdownProcesses?: (() => Promise<void>)[];
+    onSignalProcesses?: (() => Promise<void>)[];
+    onShutdownProcesses?: (() => Promise<void>)[];
+  },
+) =>
   createTerminus(server, {
     healthChecks: {
-      "/healthcheck": healthCheck,
+      "/healthcheck": healthCheck(healthCheckProcesses),
     },
-    beforeShutdown,
-    onSignal,
-    onShutdown,
+    beforeShutdown: beforeShutdown(beforeShutdownProcesses),
+    onSignal: onSignal(onSignalProcesses),
+    onShutdown: onShutdown(onShutdownProcesses),
   });
 
 export default terminus;
