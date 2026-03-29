@@ -1,3 +1,10 @@
+# [1.24.0](https://github.com/msobiecki/boilerplate-express-server/compare/v1.23.0...v1.24.0) (2026-03-29)
+
+
+### Features
+
+* update packages ([facbecb](https://github.com/msobiecki/boilerplate-express-server/commit/facbecb4565a1b6b6e5f152b97cc351e89dd2540))
+
 # [1.23.0](https://github.com/msobiecki/boilerplate-express-server/compare/v1.22.0...v1.23.0) (2026-01-23)
 
 
