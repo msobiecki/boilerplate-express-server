@@ -18,8 +18,7 @@ export function closeSocket(): Promise<void> {
     }
     const resolvedPath = path.resolve(port);
 
-    // Check if the socket file exists and remove it if so
-    if (fs.existsSync(`${resolvedPath}`)) {
+    if (fs.existsSync(resolvedPath)) {
       fs.unlinkSync(resolvedPath);
       logger.info(`Socket file ${resolvedPath} has been removed.`);
     } else {

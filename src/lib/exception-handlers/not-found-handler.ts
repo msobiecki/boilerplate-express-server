@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import { type NextFunction, type Request, type Response } from "express";
 
 import { NOT_FOUND } from "@utils/get-response-status-code";
 import { ExceptionError } from "./error-handler";

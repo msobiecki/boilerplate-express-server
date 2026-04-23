@@ -1,4 +1,9 @@
-import { Router, Request, Response, NextFunction } from "express";
+import {
+  Router,
+  type Request,
+  type Response,
+  type NextFunction,
+} from "express";
 import swaggerJSDoc from "swagger-jsdoc";
 import { setup, serve } from "swagger-ui-express";
 

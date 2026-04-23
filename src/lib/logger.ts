@@ -1,5 +1,10 @@
 import NodePath from "node:path";
-import { pino, transport, LoggerOptions, DestinationStream } from "pino";
+import {
+  pino,
+  transport,
+  type LoggerOptions,
+  type DestinationStream,
+} from "pino";
 
 import environment from "@environment";
 

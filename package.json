@@ -28,6 +28,7 @@
     "start:cluster": "tsx dist/cluster.js",
     "dev": "tsx watch src/index.ts",
     "dev:cluster": "tsx watch src/cluster.ts",
+    "lint": "eslint .",
     "prepare": "husky"
   },
   "dependencies": {
@@ -52,7 +53,7 @@
   "devDependencies": {
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
-    "@msobiecki/eslint-config": "^9.13.0",
+    "@msobiecki/eslint-config": "^9.16.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/cookie-parser": "^1.4.10",

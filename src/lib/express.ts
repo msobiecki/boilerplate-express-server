@@ -1,7 +1,10 @@
 import http from "node:http";
 import { chmodSync } from "node:fs";
-import express, { RequestHandler, ErrorRequestHandler } from "express";
-import { CronJob, CronOnCompleteCommand } from "cron";
+import express, {
+  type RequestHandler,
+  type ErrorRequestHandler,
+} from "express";
+import { type CronJob, type CronOnCompleteCommand } from "cron";
 
 import environment from "@environment";
 

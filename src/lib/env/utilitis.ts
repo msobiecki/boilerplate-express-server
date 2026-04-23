@@ -131,7 +131,6 @@ export function toBool(value: string): boolean {
  */
 export function toNull(value: string): null {
   if (value === "null") {
-    // eslint-disable-next-line unicorn/no-null
     return null;
   }
 

@@ -1,8 +1,8 @@
-import { Server } from "node:http";
+import { type Server } from "node:http";
 import {
   createTerminus,
   HealthCheckError,
-  TerminusState,
+  type TerminusState,
 } from "@godaddy/terminus";
 
 import { taggedLogger } from "./logger";
