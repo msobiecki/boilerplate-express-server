@@ -1,3 +1,10 @@
+# [1.25.0](https://github.com/msobiecki/boilerplate-express-server/compare/v1.24.0...v1.25.0) (2026-04-23)
+
+
+### Features
+
+* update github actions ([142031c](https://github.com/msobiecki/boilerplate-express-server/commit/142031cca25386666af399639e4589c0c354996b))
+
 # [1.24.0](https://github.com/msobiecki/boilerplate-express-server/compare/v1.23.0...v1.24.0) (2026-03-29)
 
 
