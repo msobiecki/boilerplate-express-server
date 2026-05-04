@@ -39,7 +39,7 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "express-prom-bundle": "^8.0.0",
-    "express-rate-limit": "^8.4.1",
+    "express-rate-limit": "^8.5.0",
     "helmet": "^8.1.0",
     "http-status": "^1.7.4",
     "pino": "^10.3.1",
